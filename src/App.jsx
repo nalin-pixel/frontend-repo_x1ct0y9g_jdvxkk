@@ -1,28 +1,17 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Shop from './pages/Shop'
+import Product from './pages/Product'
+import Static from './pages/Static'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/product/:id" element={<Product />} />
+      <Route path="/about" element={<Static title="About Sneakly">We curate premium sneakers from top brands. Our mission is to help you move better and look great doing it.</Static>} />
+      <Route path="/contact" element={<Static title="Contact">Reach us anytime at hello@sneakly.shop — we usually respond within 24 hours.</Static>} />
+    </Routes>
   )
 }
-
-export default App
